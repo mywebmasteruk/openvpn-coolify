@@ -1,0 +1,16 @@
+services:
+  - type: docker
+    name: openvpn
+    image: kylemanna/openvpn
+    ports:
+      - published: 1194
+        target: 1194
+        protocol: udp
+    docker:
+      capabilities:
+        - NET_ADMIN
+    volumes:
+      - name: ovpn-data
+        mountPath: /etc/openvpn
+volumes:
+  - name: ovpn-data
